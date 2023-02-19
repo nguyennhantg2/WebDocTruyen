@@ -1,0 +1,131 @@
+﻿@model WebDocTruyen.Models.TRUYEN
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <style>
+        .smallTitle {
+            padding-bottom: 10px;
+            font-weight: 300;
+            font-size: 16px;
+            text-transform: uppercase;
+            border-bottom: 2px solid #2980b9;
+        }
+
+        .item-chap {
+            padding: 5px 5px 5px 0px;
+            border-bottom: 2px dashed #ddd;
+        }
+    </style>
+}
+
+@{
+    var ss = Session["tentruyen"];
+}  
+
+<div class="container">
+    <div class="row">
+        
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8">
+            <ul class="list-inline" style="padding-top:15px;">
+                <li>@Html.ActionLink("Trang chủ", "Index", "Home")</li>
+                <li><i class="fa fa-angle-double-right" aria-hidden="true"></i></li>
+                <li><a href="~/TRUYENs/Details/@Model.IDTRUYEN">@Model.TENTRUYEN</a></li>
+            </ul>
+            <div class="text-center">
+                <h3>@Model.TENTRUYEN</h3>
+                <i>[Cập nhật lúc: Model.TIMEPOST]</i>
+            </div>
+                <table style="margin-top: 10px;">
+                    <tr style="vertical-align:top;">
+                        <td rowspan="7"><img src="@Model.LINKAVATAR" style="width:auto;height:300px;padding-right:20px;" /></td>
+                    </tr>
+                    <tr style="vertical-align:top;padding-top:5px;">
+                        <td style="padding-top:7px; padding-right:30px;"><i class="fa fa-plus"> Tên khác:</i></td>
+                        <td style="padding-top:2px;">@Model.TENTRUYEN</td>
+                    </tr>
+                    <tr style="vertical-align:top;">
+                        <td style="padding-top:7px;"><i class="fa fa-user"> Tác giả:</i></td>
+                        <td style="padding-top:2px;">@Model.TACGIA</td>
+                    </tr>
+                    <tr style="vertical-align:top;">
+                        <td style="padding-top:7px;"><i class="fa fa-rss"> Tình trạng:</i></td>
+                        <td style="padding-top:2px;"> Đang cập nhật...</td>
+                    </tr>
+                    <tr style="vertical-align:top;">
+                        <td style="padding-top:7px;"><i class="fa fa-tags"> Thể loại:</i></td>
+                        <td style="padding-top:2px;">Model.THELOAI</td>
+                    </tr>
+                    <tr style="vertical-align:top;">
+                        <td style="padding-top:7px;"><i class="fa fa-eye"> Lượt xem:</i></td>
+                        <td style="padding-top:2px;">@Model.LUOTXEM</td>
+                    </tr>
+                    <tr style="vertical-align:top;">
+                        <td style="padding-top:7px;" colspan="2">
+                            <button class="btn btn-success">❤ Theo dõi</button> Model.LUOTTHEODOI Người đã theo dõi.<br><br>
+                            <a href="C:/Users/Admin/Desktop/webdoctruyen/truyen/DoremonP1/000Index.html" class="btn btn-warning">Đọc truyện</a>
+                        </td>
+                    </tr>
+                </table>
+                <div>
+                    <div class="smallTitle"><i class="fa fa-file-text-o"> Nội DUNG</i></div>
+                    <p class="text-justify">
+                        @Model.NOIDUNG
+                    </p>
+                    <div class="smallTitle"><i class="fa fa-list"> DANH SÁCH CHƯƠNG</i></div>
+                    @for (var i = 1; i < 10; i++)
+                    {
+                        <div class="item-chap">
+                            <a href="/CHUONGTRUYENs/Details/@i"> Chapter @i</a>
+                        </div>
+                    }
+                </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4" style="padding-right:30px;">
+
+            <div class="darkbox">
+                <div class="smallTitle">Truyện đang theo dõi</div>
+                <a href="#" style="padding-left:10px;color:black;">Hướng dẫn theo dõi truyện</a>
+            </div>
+
+            <div class="darkbox">
+                <b class="smallTitle">Lịch sử đọc truyện</b>
+                <div class="itemDB"><img src="images/Icon-history/one-piece.jpg" width="50" style="float:left;margin: 5px 5px;">One piece<br><a href="#">Đọc tiếp truyện</a></div>
+                <div class="itemDB"><img src="images/Icon-history/ttld-conan.jpg" width="50" style="float:left;margin: 5px 5px;">Thám tử lừng danh Conan<br><a href="#">Đọc tiếp truyện</a></div>
+                <div class="itemDB"><img src="images/Icon-history/doremon-tap-24.jpg" width="50" style="float:left;margin: 5px 5px;">Đoraemon 24: Nobita ở vương quốc chó mèo<br><a href="C:/Users/Admin/Desktop/webdoctruyen/truyen/drm-index.html">Đọc tiếp truyện</a></div>
+            </div>
+            <div class="darkbox">
+
+                <div class="tab">
+                    <button class="tablinks" onclick="openTruyen(event, 'topThang')" id="defaultOpen">Top tháng</button>
+                    <button class="tablinks" onclick="openTruyen(event, 'topTuan')">Top tuần</button>
+                    <button class="tablinks" onclick="openTruyen(event, 'topNgay')">Top ngày</button>
+                </div>
+
+                <div id="topThang" class="tabcontent" style="active">
+                    <div class="itemDB"><h5 style="color:blue;float:left;padding-top:15px;">01</h5><img src="images/Icon-history/one-piece.jpg" width="50" style="float:left;margin: 5px 5px;">One piece<br><a href="#">Chapter 979</a>&emsp;&emsp;<i class="fa fa-eye"><i> 1.123.456</i></i></div>
+                    <div class="itemDB"><h5 style="color:green;float:left;padding-top:15px;">02</h5><img src="images/Icon-history/ttld-conan.jpg" width="50" style="float:left;margin: 5px 5px;">Thám tử lừng danh Conan<br><a href="#">Chapter 904</a>&emsp;&emsp;<i class="fa fa-eye"><i> 923.111</i></i></div>
+                    <div class="itemDB"><h5 style="color:red;float:left;padding-top:15px;">03</h5><img src="images/Icon-history/doremon-tap-24.jpg" width="50" style="float:left;margin: 5px 5px;">Đoraemon truyện dài<br><a href="file:///C:/Users/Admin/Desktop/webdoctruyen/truyen/DoremonP1/000Index.html">Chapter 024</a>&emsp;&emsp;<i class="fa fa-eye"><i> 823.456</i></i></div>
+                    <div class="itemDB"><h5 style="color:black;float:left;padding-top:15px;">04</h5><img src="images/Icon-history/tddv.png" width="50" style="float:left;margin: 5px 5px;">Thần đồng đất Việt<br><a href="#">Chapter 205</a>&emsp;&emsp;<i class="fa fa-eye"><i> 623.456</i></i></div>
+                    <div class="itemDB"><h5 style="color:black;float:left;padding-top:15px;">05</h5><img src="images/Icon-history/naruto.jpg" width="50" style="float:left;margin: 5px 5px;">Naruto<br><a href="#">Chapter 103</a>&emsp;&emsp;<i class="fa fa-eye"><i> 423.456</i></i></div>
+                </div>
+
+                <div id="topTuan" class="tabcontent" style="display:none">
+                    <div class="itemDB"><h5 style="color:blue;float:left;padding-top:15px;">01</h5><img src="images/Icon-history/doremon-tap-24.jpg" width="50" style="float:left;margin: 5px 5px;">Đoraemon truyện dài<br><a href="file:///C:/Users/Admin/Desktop/webdoctruyen/truyen/DoremonP1/000Index.html">Chapter 024</a>&emsp;&emsp;<i class="fa fa-eye"><i> 100.456</i></i></div>
+                    <div class="itemDB"><h5 style="color:green;float:left;padding-top:15px;">02</h5><img src="images/Icon-history/ttld-conan.jpg" width="50" style="float:left;margin: 5px 5px;">Thám tử lừng danh Conan<br><a href="#">Chapter 904</a>&emsp;&emsp;<i class="fa fa-eye"><i> 83.111</i></i></div>
+                    <div class="itemDB"><h5 style="color:red;float:left;padding-top:15px;">03</h5><img src="images/Icon-history/one-piece.jpg" width="50" style="float:left;margin: 5px 5px;">One piece<br><a href="#">Chapter 979</a>&emsp;&emsp;<i class="fa fa-eye"><i> 63.456</i></i></div>
+                    <div class="itemDB"><h5 style="color:black;float:left;padding-top:15px;">04</h5><img src="images/Icon-history/naruto.jpg" width="50" style="float:left;margin: 5px 5px;">Naruto<br><a href="#">Chapter 103</a>&emsp;&emsp;<i class="fa fa-eye"><i> 50.456</i></i></div>
+                    <div class="itemDB"><h5 style="color:black;float:left;padding-top:15px;">05</h5><img src="images/Icon-history/tddv.png" width="50" style="float:left;margin: 5px 5px;">Thần đồng đất Việt<br><a href="#">Chapter 205</a>&emsp;&emsp;<i class="fa fa-eye"><i> 43.456</i></i></div>
+                </div>
+
+                <div id="topNgay" class="tabcontent" style="display:none">
+                    <div class="itemDB"><h5 style="color:blue;float:left;padding-top:15px;">01</h5><img src="images/Icon-history/doremon-tap-24.jpg" width="50"  style="float:left;margin: 5px 5px;">Đoraemon truyện dài<br><a href="file:///C:/Users/Admin/Desktop/webdoctruyen/truyen/DoremonP1/000Index.html">Chapter 024</a>&emsp;&emsp;<i class="fa fa-eye"><i> 1.456</i></i></div>
+                    <div class="itemDB"><h5 style="color:green;float:left;padding-top:15px;">02</h5><img src="images/Icon-history/one-piece.jpg" width="50" style="float:left;margin: 5px 5px;">One piece<br><a href="#">Chapter 979</a>&emsp;&emsp;<i class="fa fa-eye"><i> 1.056</i></i></div>
+                    <div class="itemDB"><h5 style="color:red;float:left;padding-top:15px;">03</h5><img src="images/Icon-history/naruto.jpg" width="50" style="float:left;margin: 5px 5px;">Naruto<br><a href="#">Chapter 103</a>&emsp;&emsp;<i class="fa fa-eye"><i> 456</i></i></div>
+                    <div class="itemDB"><h5 style="color:black;float:left;padding-top:15px;">04</h5><img src="images/Icon-history/ttld-conan.jpg" width="50" style="float:left;margin: 5px 5px;">Thám tử lừng danh Conan<br><a href="#">Chapter 904</a>&emsp;&emsp;<i class="fa fa-eye"><i> 111</i></i></div>
+                    <div class="itemDB"><h5 style="color:black;float:left;padding-top:15px;">05</h5><img src="images/Icon-history/tddv.png" width="50" style="float:left;margin: 5px 5px;">Thần đồng đất Việt<br><a href="#">Chapter 205</a>&emsp;&emsp;<i class="fa fa-eye"><i> 76</i></i></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,69 @@
+﻿@model IEnumerable<WebDocTruyen.Models.USER>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.USERNAME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FULLNAME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EMAIL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IDCHUCVU)
+        </th>
+        <th>ACTION</th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.USERNAME)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.FULLNAME)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.EMAIL)
+    </td>
+    <td>
+        @if(item.IDCHUCVU == 1)
+        {
+            <p style="color:red; font-weight: bold">Admin</p>
+        }
+        else
+        {
+            <p>Member</p>
+        }
+    </td>
+
+    @if (Session["IDCHUCVU"] != null && Session["IDCHUCVU"].Equals(1))
+    {
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.IDUSER }) |
+            @Html.ActionLink("ChangePassword", "ChangePassword", new { id = item.IDUSER }) |
+            @Html.ActionLink("Details", "Details", new { id = item.IDUSER }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.IDUSER })
+        </td>
+    }
+    else{
+    <td>
+        @Html.ActionLink("Details", "Details", new { id = item.IDUSER })
+    </td>
+    }
+    </tr>
+}
+
+</table>

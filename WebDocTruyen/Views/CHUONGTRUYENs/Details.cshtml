@@ -1,0 +1,161 @@
+﻿@model WebDocTruyen.Models.CHUONGTRUYEN
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutTruyen.cshtml";
+    <style>
+        /*Chuong truyen*/
+        .top-chuongtruyen {
+            background: white;
+            margin-top: 35px;
+            padding: 10px 0px 0px 20px;
+            border-bottom: 1px solid #ecedee;
+        }
+
+        .top-chuongtruyen-title {
+            font-weight: 400;
+            font-size: 20px;
+            color: #2980b9;
+            text-transform: uppercase;
+        }
+
+        .top-chuongtruyen-timepost {
+            font-size: 15px;
+            font-weight: 500;
+            font-size: 20px;
+        }
+
+
+        .bottom-chuongtruyen {
+            background: #f9f9f9;
+            margin-top: 10px;
+        }
+
+
+        .bottom-chuongtruyen-btn {
+            margin: 10px 0px 10px 50%;
+        }
+
+
+        .top-chuongtruyen-sever {
+            background: #f9f9f9;
+            text-align: center;
+            padding: 10px 10px;
+        }
+
+        .top-chuongtruyen-icon {
+            margin: 0px 5px 0px 5px;
+            color: #ae4ad9;
+            font-size: 24px;
+        }
+
+        .top-chuongtruyen-error {
+            margin: 0px 5px 0px 5px;
+            color: red;
+            font-size: 24px;
+        }
+
+        .sticky {
+            background: #e4e4e4;
+            margin-left: -200px;
+            padding: 10px;
+        }
+
+        .top-chuongtruyen-option {
+            width: 200px;
+            height: 30px;
+            border-radius: 5px;
+        }
+    </style>
+
+}
+
+
+
+
+
+
+
+<div class="container">
+    <div class="col top-chuongtruyen">
+        <ul class="list-inline">
+            <li>@Html.ActionLink("Trang chủ", "Index", "Home")</li>
+            <li><i class="fa fa-angle-double-right" aria-hidden="true"></i></li>
+            <li><a href="/TRUYENs/Details/@Model.IDTRUYEN">Đô rê mon</a></li>
+            <li><i class="fa fa-angle-double-right" aria-hidden="true"></i></li>
+            <li><a href="/CHUONGTRUYENs/Details/@Model.IDCHAP">@Model.TENCHAP</a></li>
+        </ul>   
+        <ul class="list-inline">
+            <li><a href="~/TRUYENs/Details/@Model.IDTRUYEN" class="top-chuongtruyen-title">Truyện @Model.IDTRUYEN</a></li>
+            <li class="top-chuongtruyen-timepost">- @Model.TENCHAP <i>[Cập nhật lúc: @Model.TIMEPOST]</i></li>
+        </ul>
+    </div>
+    <div class="col-12 top-chuongtruyen-sever">
+        <p>Nếu không xem được truyện vui lòng đổi "SERVER ẢNH" bên dưới</p>
+        <button class="btn btn-success" style="	background: #5cb85c; border: 1px solid #5cb85c;">Sever 1</button>
+        <button class="btn btn-primary">Sever 2</button>
+        <button class="btn btn-primary">Sever 3</button>
+        <button class="btn btn-primary">Sever VIP</button>
+        <button class="btn btn-primary">Sever VIP 2</button>
+        <br><br>
+        <button class="btn btn-warning">Báo lỗi</button>
+        <div class="nhacnho">
+            <i class="fa fa-info-circle"></i>
+            <i>Sử dụng mũi tên trái (←) hoặc phải (→) để chuyển chapter</i>
+        </div>
+
+        <div class="center-block top-chuongtruyen-focus" id="header-list">
+            <a href="/"><i class="fa fa-home top-chuongtruyen-icon"></i></a>
+            <a href="/TRUYENs/Details/@Model.IDTRUYEN"><i class="fa fa-list top-chuongtruyen-icon"></i></a>
+            <a href="" class="fa fa-undo error top-chuongtruyen-error"></a>
+            <button class="btn btn-success"><i class="fa fa-angle-left"></i></button>
+            <select id="sltruyen" class="top-chuongtruyen-option">
+                <option value="@Model.IDCHAP" active>@Model.TENCHAP</option>
+                @for (var j = 1; j < 10; j++)
+                {
+                    if (j.Equals(Model.IDCHAP))
+                    {
+                        continue;
+                    }
+
+                    <option value="@j">Chap @j</option>
+                }
+
+            </select>
+            <button class="btn btn-success"><i class="fa fa-angle-right"></i></button>
+            <button class="btn btn-success">❤ Theo dõi</button>
+        </div>
+
+    </div>
+</div>
+
+
+
+<div class="container" style="padding-top: 30px">
+    @for (var i = Model.BATDAU; i < Model.KETTHUC; i++)
+    {
+        string link = Model.LINKTRUYEN + i + Model.DUOIANH;
+        <img class="center-block" src="@link" />
+    }
+</div>
+
+
+<div class="container bottom-chuongtruyen">
+    <div class="center-block">
+        <a href="001Index.html" class="btn btn-danger bottom-chuongtruyen-btn">Next <i class="fa fa-chevron-right"></i></a>
+
+    </div>
+    <ul class="list-inline">
+        <li>@Html.ActionLink("Trang chủ", "Index", "Home")</li>
+        <li><i class="fa fa-angle-double-right" aria-hidden="true"></i></li>
+        <li><a href="/TRUYENs/Details/@Model.IDTRUYEN">@Model.IDTRUYEN</a></li>
+        <li><i class="fa fa-angle-double-right" aria-hidden="true"></i></li>
+        <li><a href="/CHUONGTRUYENs/Details/@Model.IDCHAP">@Model.TENCHAP</a></li>
+    </ul>
+</div>
+
+
+
+
+
+@Scripts.Render("~/Scripts/wdt-script.js");

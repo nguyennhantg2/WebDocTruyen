@@ -1,0 +1,335 @@
+﻿@model IEnumerable<WebDocTruyen.Models.TRUYEN>
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<style>
+    .MultiCarousel {
+        overflow: hidden;
+        width: 97%;
+        position: relative;
+    }
+
+
+        .MultiCarousel .MultiCarousel-inner {
+            transition: 1s ease all;
+            float: left;
+        }
+
+            .MultiCarousel .MultiCarousel-inner .item {
+                float: left;
+            }
+
+                .MultiCarousel .MultiCarousel-inner .item > div {
+                    text-align: center;
+                    padding: 5px;
+                    margin: 5px;
+                    color: #666;
+                }
+
+        .MultiCarousel .leftLst, .MultiCarousel .rightLst {
+            position: absolute;
+            border-radius: 50%;
+            top: calc(50% - 20px);
+        }
+
+        .MultiCarousel .leftLst {
+            left: 0;
+            width: 33px;
+            background: none;
+            border-color: black;
+            color: black;
+        }
+
+        .MultiCarousel .rightLst {
+            right: 0;
+            width: 33px;
+            background: none;
+            border-color: black;
+            color: black;
+        }
+
+        .MultiCarousel .MultiCarousel {
+            background: #ccc;
+        }
+
+    .content-list-mini {
+        background: black;
+        color: white;
+    }
+
+    .item-top-1 {
+        color: blue;
+        float: left;
+        padding-top: 15px;
+    }
+
+    .item-top-2 {
+        color: green;
+        float: left;
+        padding-top: 15px;
+    }
+    .item-top-3 {
+        color: red;
+        float: left;
+        padding-top: 15px;
+    }
+    .item-top-4 {
+        color: black;
+        float: left;
+        padding-top: 15px;
+    }
+    .item-top-5 {
+        color: black;
+        float: left;
+        padding-top: 15px;
+    }
+</style>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col  page-title">
+            truyện mới cập nhật <i class="fa fa-angle-right"></i>
+        </div>
+    </div>
+    <div class="row">
+        <div class="MultiCarousel" data-items="1,2,3,5" data-slide="1" id="MultiCarousel" data-interval="1000">
+            <div class="MultiCarousel-inner">
+                @foreach (var item in Model)
+                {
+                    <div class="item">
+                        <div class="pad15">
+                            <a href="~/TRUYENs/Details/@item.IDTRUYEN">
+                                <img height="280" src="@item.LINKAVATAR" />
+                                <p class="content-list-mini">@item.TENTRUYEN</p>
+                            </a>
+                        </div>
+                    </div>
+                }
+            </div>
+            <button class="btn btn-light leftLst"><i class="fa fa-angle-left"></i></button>
+            <button class="btn btn-light rightLst"><i class="fa fa-angle-right"></i></button>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col  page-title">
+            truyện mới cập nhật <i class="fa fa-angle-right"></i>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8">
+            @foreach (var item in Model)
+            {
+                <div class="col-xs-4 col-sm-4 col-md-3 col-lg-3">
+                    <div class="box">
+                        <img style="width: 100%; height: 230px;" src="@item.LINKAVATAR" />
+                        <div class="box-content">
+                            <p class="description">@item.TENTRUYEN</p>
+                            <a href="~/TRUYENs/Details/@item.IDTRUYEN">Đọc truyện</a>
+                        </div>
+                        <div class="heading"><i class="fa fa-eye">item.LUOTXEM </i><i class="fa fa-comment"> 10k </i><i class="fa fa-heart"> 4k</i></div>
+                    </div>
+                </div>
+            }
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <nav aria-label="...">
+                    <ul class="pagination pagination-sm">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1">1</a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4" style="padding-right:30px;">
+
+            <div class="darkbox">
+                <div class="smallTitle">Truyện đang theo dõi</div>
+                <a href="#" style="padding-left:10px;color:black;">Hướng dẫn theo dõi truyện</a>
+            </div>
+
+            <div class="darkbox">
+                <b class="smallTitle">Lịch sử đọc truyện</b>
+                @foreach (var item in Model)
+                {
+                    <div class="itemDB">
+                        <img width="30" src="@item.LINKAVATAR" style="float:left;margin: 5px 5px;">
+                        @item.TENTRUYEN<br>
+                        <a href="~/TRUYENs/Details/@item.IDTRUYEN">Đọc tiếp truyện</a>
+                    </div>
+                }
+            </div>
+            <div class="darkbox">
+
+                <div class="tab">
+                    <button class="tablinks" onclick="openTruyen(event, 'topThang')" id="defaultOpen">Top tháng</button>
+                    <button class="tablinks" onclick="openTruyen(event, 'topTuan')">Top tuần</button>
+                    <button class="tablinks" onclick="openTruyen(event, 'topNgay')">Top ngày</button>
+                </div>
+
+                <div id="topThang" class="tabcontent" active>
+                    @for (int i = 1; i < 6; i++)
+                    {
+                        <div class="itemDB">
+                    <h5 class="item-top-@i">0 @i</h5>
+                    <img src="images/Icon-history/one-piece.jpg" width="50" style="float:left;margin: 5px 5px;">
+                    One piece<br>
+                    <a href="#">Chapter 979</a>&emsp;&emsp;
+                    <i class="fa fa-eye"><i>
+                        1.123.456</i></i>
+                        </div>
+
+                    }
+                </div>
+
+                <div id="topTuan" class="tabcontent" style="display:none">
+                    <div class="itemDB"><h5 style="color:blue;float:left;padding-top:15px;">01</h5><img src="images/Icon-history/doremon-tap-24.jpg" width="50" style="float:left;margin: 5px 5px;">Đoraemon truyện dài<br><a href="file:///C:/Users/Admin/Desktop/webdoctruyen/truyen/DoremonP1/000Index.html">Chapter 024</a>&emsp;&emsp;<i class="fa fa-eye"><i> 100.456</i></i></div>
+                    <div class="itemDB"><h5 style="color:green;float:left;padding-top:15px;">02</h5><img src="images/Icon-history/ttld-conan.jpg" width="50" style="float:left;margin: 5px 5px;">Thám tử lừng danh Conan<br><a href="#">Chapter 904</a>&emsp;&emsp;<i class="fa fa-eye"><i> 83.111</i></i></div>
+                    <div class="itemDB"><h5 style="color:red;float:left;padding-top:15px;">03</h5><img src="images/Icon-history/one-piece.jpg" width="50" style="float:left;margin: 5px 5px;">One piece<br><a href="#">Chapter 979</a>&emsp;&emsp;<i class="fa fa-eye"><i> 63.456</i></i></div>
+                    <div class="itemDB"><h5 style="color:black;float:left;padding-top:15px;">04</h5><img src="images/Icon-history/naruto.jpg" width="50" style="float:left;margin: 5px 5px;">Naruto<br><a href="#">Chapter 103</a>&emsp;&emsp;<i class="fa fa-eye"><i> 50.456</i></i></div>
+                    <div class="itemDB"><h5 style="color:black;float:left;padding-top:15px;">05</h5><img src="images/Icon-history/tddv.png" width="50" style="float:left;margin: 5px 5px;">Thần đồng đất Việt<br><a href="#">Chapter 205</a>&emsp;&emsp;<i class="fa fa-eye"><i> 43.456</i></i></div>
+                </div>
+
+                <div id="topNgay" class="tabcontent" style="display:none">
+                    <div class="itemDB"><h5 style="color:blue;float:left;padding-top:15px;">01</h5><img src="images/Icon-history/doremon-tap-24.jpg" width="50" style="float:left;margin: 5px 5px;">Đoraemon truyện dài<br><a href="file:///C:/Users/Admin/Desktop/webdoctruyen/truyen/DoremonP1/000Index.html">Chapter 024</a>&emsp;&emsp;<i class="fa fa-eye"><i> 1.456</i></i></div>
+                    <div class="itemDB"><h5 style="color:green;float:left;padding-top:15px;">02</h5><img src="images/Icon-history/one-piece.jpg" width="50" style="float:left;margin: 5px 5px;">One piece<br><a href="#">Chapter 979</a>&emsp;&emsp;<i class="fa fa-eye"><i> 1.056</i></i></div>
+                    <div class="itemDB"><h5 style="color:red;float:left;padding-top:15px;">03</h5><img src="images/Icon-history/naruto.jpg" width="50" style="float:left;margin: 5px 5px;">Naruto<br><a href="#">Chapter 103</a>&emsp;&emsp;<i class="fa fa-eye"><i> 456</i></i></div>
+                    <div class="itemDB"><h5 style="color:black;float:left;padding-top:15px;">04</h5><img src="images/Icon-history/ttld-conan.jpg" width="50" style="float:left;margin: 5px 5px;">Thám tử lừng danh Conan<br><a href="#">Chapter 904</a>&emsp;&emsp;<i class="fa fa-eye"><i> 111</i></i></div>
+                    <div class="itemDB"><h5 style="color:black;float:left;padding-top:15px;">05</h5><img src="images/Icon-history/tddv.png" width="50" style="float:left;margin: 5px 5px;">Thần đồng đất Việt<br><a href="#">Chapter 205</a>&emsp;&emsp;<i class="fa fa-eye"><i> 76</i></i></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container ModuleContent">
+    <ul class="list-inline" style="padding-top: 10px;">
+        <li><a href="#">Truyen tranh</a></li>
+        <li><a href="#">Truyện tranh</a></li>
+        <li><a href="#">Truyen tranh online</a></li>
+        <li><a href="#">Truyện tranh online</a></li>
+        <li><a href="#">Doc truyen tranh</a></li>
+        <li><a href="#">Đọc truyện tranh</a></li>
+    </ul>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function () {
+        var itemsMainDiv = ('.MultiCarousel');
+        var itemsDiv = ('.MultiCarousel-inner');
+        var itemWidth = "";
+
+        $('.leftLst, .rightLst').click(function () {
+            var condition = $(this).hasClass("leftLst");
+            if (condition)
+                click(0, this);
+            else
+                click(1, this)
+        });
+
+        ResCarouselSize();
+
+
+
+
+        $(window).resize(function () {
+            ResCarouselSize();
+        });
+
+        //this function define the size of the items
+        function ResCarouselSize() {
+            var incno = 0;
+            var dataItems = ("data-items");
+            var itemClass = ('.item');
+            var id = 0;
+            var btnParentSb = '';
+            var itemsSplit = '';
+            var sampwidth = $(itemsMainDiv).width();
+            var bodyWidth = $('body').width();
+            $(itemsDiv).each(function () {
+                id = id + 1;
+                var itemNumbers = $(this).find(itemClass).length;
+                btnParentSb = $(this).parent().attr(dataItems);
+                itemsSplit = btnParentSb.split(',');
+                $(this).parent().attr("id", "MultiCarousel" + id);
+
+
+                if (bodyWidth >= 1200) {
+                    incno = itemsSplit[3];
+                    itemWidth = sampwidth / incno;
+                }
+                else if (bodyWidth >= 992) {
+                    incno = itemsSplit[2];
+                    itemWidth = sampwidth / incno;
+                }
+                else if (bodyWidth >= 768) {
+                    incno = itemsSplit[1];
+                    itemWidth = sampwidth / incno;
+                }
+                else {
+                    incno = itemsSplit[0];
+                    itemWidth = sampwidth / incno;
+                }
+                $(this).css({ 'transform': 'translateX(0px)', 'width': itemWidth * itemNumbers });
+                $(this).find(itemClass).each(function () {
+                    $(this).outerWidth(itemWidth);
+                });
+
+                $(".leftLst").addClass("over");
+                $(".rightLst").removeClass("over");
+
+            });
+        }
+
+
+        //this function used to move the items
+        function ResCarousel(e, el, s) {
+            var leftBtn = ('.leftLst');
+            var rightBtn = ('.rightLst');
+            var translateXval = '';
+            var divStyle = $(el + ' ' + itemsDiv).css('transform');
+            var values = divStyle.match(/-?[\d\.]+/g);
+            var xds = Math.abs(values[4]);
+            if (e == 0) {
+                translateXval = parseInt(xds) - parseInt(itemWidth * s);
+                $(el + ' ' + rightBtn).removeClass("over");
+
+                if (translateXval <= itemWidth / 2) {
+                    translateXval = 0;
+                    $(el + ' ' + leftBtn).addClass("over");
+                }
+            }
+            else if (e == 1) {
+                var itemsCondition = $(el).find(itemsDiv).width() - $(el).width();
+                translateXval = parseInt(xds) + parseInt(itemWidth * s);
+                $(el + ' ' + leftBtn).removeClass("over");
+
+                if (translateXval >= itemsCondition - itemWidth / 2) {
+                    translateXval = itemsCondition;
+                    $(el + ' ' + rightBtn).addClass("over");
+                }
+            }
+            $(el + ' ' + itemsDiv).css('transform', 'translateX(' + -translateXval + 'px)');
+        }
+
+        //It is used to get some elements from btn
+        function click(ell, ee) {
+            var Parent = "#" + $(ee).parent().attr("id");
+            var slide = $(Parent).attr("data-slide");
+            ResCarousel(ell, Parent, slide);
+        }
+    });
+</script>

@@ -1,0 +1,516 @@
+﻿/*Home page*/
+.body {
+    background: #ebebeb;
+    font-family: arial;
+}
+
+.body-content {
+    padding-top: 200px;
+    background: #f9f9f9;
+}
+
+.body-content-truyen {
+    background: #111;
+}
+
+.header {
+    background-image: url(http://s.nettruyen.com/Data/Sites/1/skins/comic/images/bg_header_2017.jpg);
+    height: 70px;
+    text-align: center;
+    margin-top: -10px;
+    border-radius: 0px;
+}
+.header .navbar-collapse p{
+    text-align:right;
+}
+.list-inline {
+    text-align: right;
+}
+.header-list {
+    background: #e4e4e4;
+}
+
+.header img{
+    height: 100%;
+    padding-top: 22px;
+}
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 9999;
+}
+
+.content-login{
+    text-align: center;
+}
+
+
+/*Chuong truyen*/
+.top-chuongtruyen {
+    background: white;
+    margin-top: 10px;
+    border-bottom: 1px solid #ecedee;
+}
+
+.top-chuongtruyen-title p{
+    font-weight: 400;
+    font-size: 20px;
+    color: #2980b9;
+    text-transform: uppercase;
+}
+
+.top-chuongtruyen-timepost {
+    font-size: 15px;
+}
+
+
+.top-chuongtruyen-sever {
+    background: #f9f9f9;
+    text-align: center;
+    padding: 10px 10px;
+}
+
+
+
+
+.bottom-chuongtruyen {
+    background: #f9f9f9;
+    margin-top: 10px;
+}
+
+
+.bottom-chuongtruyen-btn {
+    text-align: center;
+    padding: 10px 10px;
+}
+
+
+/* menubar */
+.menubar {
+    width: 960px;
+    margin: auto;
+    margin-bottom: 0px;
+    background: #e4e4e4;
+}
+
+#main_menu {
+    margin-top: -16px;
+}
+
+    #main_menu > li {
+        float: left;
+        border-right: 1px solid #CCCCCC;
+        margin-bottom: 0px;
+    }
+
+    #main_menu li {
+        position: relative;
+        list-style: none;
+    }
+
+    #main_menu > li a {
+        display: block;
+        text-transform: none;
+        padding: 0px;
+        color: #333;
+        font-size: 15px;
+    }
+
+        #main_menu > li a:hover {
+            color: #ae4ad9;
+            text-decoration: none;
+        }
+
+    #main_menu > li > a {
+        text-transform: uppercase;
+    }
+
+    #main_menu > li > a {
+        display: block;
+        padding: 10px;
+    }
+
+    #main_menu li .sub_menu {
+        position: absolute;
+        display: none;
+        width: 200px;
+        background: #f5f5f5;
+        top: 0px;
+        left: 100%;
+    }
+
+    #main_menu li:hover > .sub_menu {
+        display: block;
+    }
+
+    #main_menu > li > .sub_menu {
+        top: 44px;
+        left: 0px;
+    }
+
+    #main_menu li:hover {
+        background: #fcfcfc;
+    }
+
+
+
+
+/* title */
+.title {
+    width: 100%;
+    background: #f9f9f9;
+    padding: 10px 10px;
+    font-weight: 400;
+    font-size: 20px;
+    text-transform: uppercase;
+    color: #2980b9;
+}
+
+.smallTitle {
+    padding-left: 10px;
+    font-weight: 400;
+    font-size: 18px;
+    margin-bottom: 3px;
+    color: #2980b9;
+}
+
+.tilteName {
+    font-weight: 400;
+    font-size: 21px;
+    text-transform: uppercase;
+    text-align: center;
+    margin: 0;
+    line-height: 1.2
+}
+
+
+/* truyen */
+#truyenhot {
+    height: 200px;
+    background: #f9f9f9;
+    margin: auto;
+}
+
+#showtruyen {
+    width: 100%;
+    margin: auto;
+}
+
+#sL {
+    background: #f9f9f9;
+}
+
+    #sL img {
+        width: 150px;
+        /* height: cover;*/
+        padding: 5px 5px;
+    }
+
+#sR {
+    background: #f9f9f9;
+}
+
+
+/* seo */
+#menuNhanh {
+    color: #888;
+    padding-top: 10px;
+}
+
+    #menuNhanh ul li {
+        float: left;
+        text-decoration: none;
+        list-style: none;
+    }
+
+        #menuNhanh ul li a {
+            color: #888;
+            padding-left: 15px;
+        }
+
+
+
+/* thể loại */
+
+
+
+
+/* box truyện */
+.darkbox {
+    border: 1px solid #ddd;
+    color: #333;
+    padding: 10px 5px;
+    clear: right;
+    margin-bottom: 15px;
+}
+
+.itemDB {
+    border-top: 1px solid #ddd;
+    padding: 5px 5px;
+    margin: 10px 0px;
+}
+
+    .itemDB a {
+        color: silver;
+    }
+
+
+
+/* ---- index truyen ---- */
+#menu-truyen ul li {
+    float: left;
+    /*list-style: "» ";*/
+    color: #ccc;
+}
+
+    #menu-truyen ul li a {
+        text-decoration: none;
+        color: #2980b9;
+        padding-right: 20px;
+    }
+
+#Main #truyendrm1 img {
+    width: 80%;
+    height: auto;
+    margin: auto;
+    padding: 10px 10px;
+}
+
+.nhacnho {
+    background: #d9edf7;
+    color: #31708f;
+    text-align: center;
+    border: 1px solid #bce8f1;
+    border-radius: 5px;
+    padding: 10px 0px 10px 0px;
+    margin: 10px;
+}
+
+#imgNen {
+    margin: 10px;
+}
+
+
+/* button */
+.btPrev {
+    height: 30px;
+    width: 30px;
+    background-image: url(images/icon-prev.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.btNext {
+    height: 30px;
+    width: 30px;
+    background-image: url(images/icon-next.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.btfollow {
+    color: #fff;
+    background: #5cb85c;
+    padding: 2px 15px;
+    border: 1px solid #5cb85c;
+    border-radius: 5px;
+}
+
+.btchuyenchap {
+    color: #fff;
+    background: #5bc0de;
+    padding: 4px 15px;
+    border: 1px solid #46b8da;
+    border-radius: 5px;
+}
+
+
+/* back to top */
+#myBtn {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    left: 30px;
+    font-size: 18px;
+    border: none;
+    outline: none;
+    background-color: red;
+    color: white;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 4px;
+}
+
+    #myBtn:hover {
+        background-color: #555;
+    }
+
+/* Truyện top */
+.tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+}
+
+    .tab button {
+        background-color: inherit;
+        float: left;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 14px 10px;
+        transition: 0.3s;
+        font-size: 17px;
+    }
+
+        .tab button:hover {
+            background-color: #ddd;
+            border-top: 2px solid #ae4ad9;
+        }
+
+        .tab button.active {
+            background-color: #ccc;
+            border-top: 2px solid #ae4ad9;
+        }
+
+
+
+/* List Truyện */
+.box {
+    width: 150px;
+    position: relative;
+    overflow: hidden;
+    margin: 3px;
+    float: left;
+}
+
+    .box img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .box .box-content {
+        transform: scale(0);
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: rgba(255, 255, 255, 0.9);
+        padding: 30px 20px;
+        transition: all 0.5s ease 0s;
+    }
+
+    .box:hover .box-content {
+        transform: scale(1);
+    }
+
+    .box .description {
+        font-size: 14px;
+        margin-bottom: 15px;
+    }
+
+    .box .heading {
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background: rgba(12, 1, 25,0.7);
+        color: #ffffff;
+        text-align: center;
+        padding: 10px 0;
+        transition: all 0.5s ease 0s;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+.tablinks {
+    width: 33%;
+}
+
+.box:hover .heading {
+    bottom: -30%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+
+
+/* login/reg */
+.navbar-form-acc {
+    margin: 0px 10px;
+    margin-top: 5px;
+}
+
+    .navbar-form-acc input[type=text], input[type=password], input[type=email] {
+        width: 100%;
+        height: 30px;
+        display: block;
+        padding-left: 30px;
+        padding-right: 15px;
+        font-size: 13px;
+        -webkit-appearance: none;
+        border: 1px solid;
+        border-color: #ddd;
+        border-radius: 2px;
+        outline: none;
+    }
+
+    .navbar-form-acc label {
+        display: block;
+        font-size: 12px;
+        width: 50%;
+        float: left;
+    }
+
+    .navbar-form-acc .tip {
+        font-size: 10px;
+        color: #d80f16;
+        text-align: right;
+        width: 50%;
+        float: right;
+    }
+
+.footer {
+    padding: 15px;
+    background: #222;
+    color: #FFFFFF;
+}
+
+.footer-content-logo{
+
+}
+
+.footer-content-info {
+    width: 80%;
+    background: white;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 10px 10px;
+}
+
+.footer-content-copyright {
+    color: #ddd;
+    margin-top: 10px;
+}
+
+.footer-title-theloai {
+    padding-left: 45px;
+    font-size: 20px;
+}
+
+.footer ul li {
+    float: left;
+    text-decoration: none;
+    list-style: none;
+    border: 1px solid #FFFFFF;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+.footer ul li a {
+    color: #fff;
+    padding: 10px;
+    font-size: 14px;
+}

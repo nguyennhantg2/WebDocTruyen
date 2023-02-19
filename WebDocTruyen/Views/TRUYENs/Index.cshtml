@@ -1,0 +1,52 @@
+﻿@model IEnumerable<WebDocTruyen.Models.TRUYEN>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TENTRUYEN)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LINKAVATAR)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TACGIA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LUOTXEM)
+        </th>
+        <th>ACTION</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TENTRUYEN)
+        </td>
+        <td>
+            <img height="50" src="@item.LINKAVATAR"/>
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TACGIA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LUOTXEM)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IDTRUYEN }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IDTRUYEN }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IDTRUYEN })
+        </td>
+    </tr>
+}
+
+</table>

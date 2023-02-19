@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Nhandenvip</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    @Styles.Render("~/Content/wdt-style.css")
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <style media="all">
+    </style>
+    <style>
+        .mylist {
+            color: white;
+            margin-top: 27px;
+            padding-right: 0px;
+        }
+    </style>
+
+</head>
+<body class="body-content-truyen">
+
+    <div class="header navbar navbar-inverse">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="/">
+                    <img class="navbar-brand" src="http://st.nettruyen.com/data/logos/logo-nettruyen.png" />
+                </a>
+            </div>
+            <div class="navbar-collapse collapse mylist">
+                @if (Session["USERNAME"] != null)
+                {
+                    <ul class="list-inline">
+                        <li><a style="color:white!important" href="~/USERs/Details/@Session["IDUSER"]">@Session["USERNAME"].ToString()</a>, </li>
+                        <li><a style="color:white!important" href="@Url.Action("Logout","Home")">Thoát</a></li>
+                    </ul>
+                }
+                else
+                {
+                    <p>
+                        <a style="color:white!important" href="@Url.Action("Login","Home")">Đăng nhập</a> /
+                        <a style="color:white!important" href="@Url.Action("Register","Home")">Đăng ký</a>
+                    </p>
+                }
+            </div>
+        </div>
+        <div>
+            <div class="header-list navbar-collapse collapse" style="padding-left: 150px; right: 0">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Trang chủ", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Truyện tranh", "About", "Home")</li>
+                    <li>@Html.ActionLink("Truyện chữ", "Contact", "Home")</li>
+                    @if (Session["IDUSER"] != null && Session["IDUSER"].Equals(1))
+                    {
+                        <li>@Html.ActionLink("Quản trị", "QuanTri", "Home")</li>
+                    }
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+    @RenderBody()
+
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-lg-4 col-sm-12">
+                    <div class="footer-content-logo">
+                        <img src="http://st.nettruyen.com/data/logos/logo-nettruyen.png" />
+                    </div>
+                    <div class="footer-content-info">
+                        <img src="https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/cp0/p80x80/22528449_1856634004370937_5820400839758379699_n.jpg?_nc_cat=1&ccb=1-3&_nc_sid=dbb9e7&_nc_ohc=7RAb5FsFfh8AX9o2rBL&_nc_ht=scontent.fhan2-4.fna&tp=27&oh=099665e5415a524c66dc78d51f7963fd&oe=607C1E09" width="50" atl="ảnh" title="ảnh" style="border:1px solid black;">
+                        <a href="#" style="color:#365899; text-decoration: none;"><b>Truyện Tranh online...</b></a>
+                    </div>
+                    <div class="footer-content-copyright">
+                        Copyright &copy; 2021 N2H Team
+                    </div>
+                </div>
+                <div class="col-md-8 col-lg-8 col-sm-12">
+                    <strong class="footer-title-theloai">Thể loại</strong>
+                    <ul>
+                        <li><a href="#" target="_self">Nhật Bản</a></li>
+                        <li><a href="#" target="_self">Việt Nam</a></li>
+                        <li><a href="#" target="_self">Thiếu nhi</a></li>
+                        <li><a href="#" target="_self">Tình cảm</a></li>
+                        <li><a href="#" target="_self">Hài hước</a></li>
+                        <li><a href="#" target="_self">Xuyên không</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,171 @@
+﻿@model WebDocTruyen.Models.USER
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <style>
+        .body {
+            font-family: Tahoma,sans-serif,Helvetica,Arial;
+        }
+
+        .postname {
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 22px;
+            line-height: 1.5;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+            .postname:after {
+                content: '';
+                display: block;
+                width: 60px;
+                height: 3px;
+                background: #ee2c74;
+                margin-top: 5px;
+            }
+
+
+        .posttitle {
+            font-weight: 500;
+            border-left: 3px solid #ee2c74;
+            padding-left: 10px;
+            font-size: 18px;
+            line-height: 1.5;
+            margin: 0 0 20px;
+            min-height: 27px;
+        }
+
+        .info-detail {
+            border: 1px solid #d9d9d9;
+            border-radius: 3px;
+            padding: 15px 20px;
+            width: 400px;
+        }
+
+            .info-detail .label {
+                float: left;
+                width: 100px;
+                padding: 0px;
+                color: #000;
+                font-size: 100%;
+                text-align: left;
+                font-weight: 400;
+            }
+
+            .info-detail .detail {
+                display: table-cell;
+                font-weight: 500;
+            }
+
+        .link-edit {
+            font-size: 13px !important;
+            color: #333;
+            position: absolute;
+            top: 65px;
+            left: 40%;
+        }
+
+
+        .col-avatar {
+            background-color: black;
+            margin-bottom: 10px;
+            padding-top: 10px;
+            padding-left: 20px
+        }
+
+        .avatar-user {
+            height: 100px;
+        }
+
+        .user-name {
+            text-transform: uppercase;
+            font-weight: 700;
+            font-size: 14px;
+            color: #fff;
+            overflow: hidden;
+        }
+
+        #menu li {
+            width: auto;
+            height: 30px;
+            line-height: 40px;
+            border-bottom: 1px solid #e8e8e8;
+            padding: 0 1em;
+        }
+
+        #menu li.active {
+            background: #e6e6e6;
+            border-left: 3px solid #ee2c74;
+            font-weight: bold;
+            
+        }
+
+        #menu ul li a {
+            text-decoration: none;
+            color: #333;
+            padding-bottom: 5px;
+        }
+
+        #menu li:hover {
+            background: #e6e6e6;
+        }
+    </style>
+}
+<ul class="list-inline" style="padding-top:15px;">
+    <li>@Html.ActionLink("Trang chủ", "Index", "Home")</li>
+    <li><i class="fa fa-angle-double-right" aria-hidden="true"></i></li>
+    <li><a href="~/USERs/Details/@Model.IDUSER">@Model.USERNAME</a></li>
+</ul>
+
+<div class="container" style="margin-bottom: 30px">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3">
+                <div class="col-avatar">
+                    <img class="avatar-user" src="@Model.LINKAVATAR" />
+                    <p class="user-name">@Model.USERNAME</p>
+                </div>
+                <div style="padding-top:10px">
+                    <div id="menu">
+                        <ul class="list-unstyled">
+                            <li class="active"><a href="#"><i class="fa fa-info-circle"></i> Thông tin chung</a></li>
+                            <li><a href="#"><i class="fa fa-book"></i> Truyện theo dõi</a></li>
+                            <li><a href="#"><i class="fa fa-list"></i> Truyện đã đăng</a></li>
+                            <li><a href="#"><i class="fa fa-comments"></i> Bình luận</a></li>
+                            <li><a href="#"><i class="fa fa-comment"></i> Thông báo</a></li>
+                            @if (Session["IDUSER"] != null && Session["IDUSER"].Equals(Model.IDUSER))
+                            {
+                                <li><a href="#"><i class="fa fa-lock"></i> Đổi mật khẩu</a></li>
+                                <li><a href="/Home/Logout"><i class="fa fa-sign-out"></i> Thoát</a></li>
+                            }
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-8 col-lg-9">
+                <div class="postname">
+                    Thông tin chung
+                </div>
+                <h2 class="posttitle">
+                    Thông tin tài khoản
+                </h2>
+                @if (Session["IDUSER"] != null && Session["IDUSER"].Equals(Model.IDUSER))
+                {
+        <a href="/USERs/Edit/@Session["IDUSER"]" class="link-edit">Chỉnh sửa <i class="fa fa-angle-right"></i></a>
+                }
+
+
+            <div class="info-detail">
+                <div class="label">Họ và tên </div>
+                <div class="detail">@Model.FULLNAME</div>
+                <div class="label">Email </div>
+                <div class="detail">@Model.EMAIL</div>
+                <div class="label">Join Date </div>
+                <div class="detail">@Model.JOINDATE</div>
+            </div>
+        </div>
+    </div>
+</div>

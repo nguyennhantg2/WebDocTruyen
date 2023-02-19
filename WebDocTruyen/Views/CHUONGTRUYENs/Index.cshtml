@@ -1,0 +1,82 @@
+﻿@model IEnumerable<WebDocTruyen.Models.CHUONGTRUYEN>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IDTRUYEN)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TENCHAP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LINKTRUYEN)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BATDAU)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.KETTHUC)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DUOIANH)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LUOTXEM)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LUOTTHEODOI)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TIMEPOST)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.IDTRUYEN)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TENCHAP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LINKTRUYEN)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BATDAU)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.KETTHUC)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DUOIANH)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LUOTXEM)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LUOTTHEODOI)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TIMEPOST)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IDCHAP }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IDCHAP }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IDCHAP })
+        </td>
+    </tr>
+}
+
+</table>
